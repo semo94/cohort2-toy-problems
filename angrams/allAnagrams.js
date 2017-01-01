@@ -30,7 +30,9 @@ var heapsPermute = function (array,result,n) {
 	result = result || [];
   n = n || array.length; 
   if (n === 1) {
-    result.push(array.join(""));
+  	if(result.indexOf(array.join(""))===-1){
+  		result.push(array.join(""));
+  	}
   } else {
     for (var i = 1; i <= n; i += 1) {
       heapsPermute(array,result, n - 1);
