@@ -51,7 +51,7 @@
  			default :
  				continue;
  		};
- 		if((curBrack<0 || sqBrack <0 || parenth<0) || arrOfChar[i] !== arrOfChar[n-i]){
+ 		if(curBrack<0 || sqBrack <0 || parenth<0){
  			return false;
  		}
  	}
