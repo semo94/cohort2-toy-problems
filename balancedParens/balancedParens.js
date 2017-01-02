@@ -14,7 +14,7 @@
  * Example:
  *  balancedParens('[](){}'); // true
  *  balancedParens('[({})]');   // true
- *  balancedParens('[(]{)}'); // false
+ *  balancedParens('[(]{)}'); // false ???? bug
  *
  * Step 3:
  * ignore non-bracket characters
@@ -25,6 +25,36 @@
  */
 
  var balancedParens = function (input) {
-	
+ 	var sqBrack = 0, curBrack = 0, parenth = 0;
+ 	var arrOfChar = input.split("");
+ 	var n = arrOfChar.length
+ 	for (var i = 0; i < n; i++) {
+ 		switch(arrOfChar[i]){
+ 			case "{":
+ 				curBrack+=1;
+ 				break;
+ 			case "}":
+ 				curBrack-=1;
+ 				break;
+ 			case "[":
+ 				sqBrack+=1;
+ 				break;
+ 			case "]":
+ 				sqBrack-=1;
+ 				break;
+ 			case "(":
+ 				parenth+=1;
+ 				break;
+ 			case ")":
+ 				parenth-=1;
+ 				break;
+ 			default :
+ 				continue;
+ 		};
+ 		if((curBrack<0 || sqBrack <0 || parenth<0) || arrOfChar[i] !== arrOfChar[n-i]){
+ 			return false;
+ 		}
+ 	}
+ 	var result = (curBrack===0 && sqBrack ===0 && parenth===0) ? true : false;
+ 	return result;	
  };
-	
