@@ -30,9 +30,26 @@
 
 // Feel free to add helper functions if needed
 
-var bubbleSort = function(array) {
-  
+var bubbleSort = function(array,n) {
+	n = n || array.length;
+	if(n===0){return array;}
+	var flage = true;
+	for (var i = 0; i < n; i++) {
+		if(array[i]>array[i+1]){
+			array = swap(array,i,i+1);
+			flage = false;
+		}
+	}
+	if(flage){return array;}
+  	return bubbleSort(array,n-1);
 };
+
+var swap = function(array,pos1,pos2){
+	var tmp = array[pos1];
+	array[pos1] = array[pos2];
+	array[pos2] = tmp;
+	return array;
+}
 
 /*
 
