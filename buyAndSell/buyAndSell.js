@@ -27,5 +27,15 @@ function getMinOfArray(numArray) {
 }
 
 var maximumProfit  = function(array) {
-	//your code is here
+	var maximumPos = [];
+	for (var i = 0; i < array.length; i++) {
+		var remArr = array.slice(i+1);
+		maximumPos.push(getMaxOfArray(remArr)-array[i]);
+	}
+	var result = getMaxOfArray(maximumPos);
+	if(result>=0){
+		return result;
+	}else{
+		return 0;
+	}
 }
