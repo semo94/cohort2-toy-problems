@@ -12,6 +12,12 @@
   *
   */
 
-  var deepEquals = function(obj1, obj2){
+  // Note: I know this is a trivial way to solve this problem and its not an optimal way, 
+  //we should compares properties' projections recursively, and also compares constructors and take care of methods and DOM nodes inside our objects.
+  var deepEquals = function(obj1, obj2, storage){
+
+  	var str1 = JSON.stringify(obj1);
+  	var str2 = JSON.stringify(obj2);
+  	return str1=== str2;
 
   }
