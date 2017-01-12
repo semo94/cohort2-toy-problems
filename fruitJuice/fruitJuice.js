@@ -21,8 +21,22 @@ Complete the functions in order to provide this functionality.
 */
 
 function Jar() {
-  // TODO
+  this.mixer = {};
+  this.amount = 0;
 }
+
+Jar.prototype.getConcentration = function(fruit) {
+	return (this.mixer[fruit] === undefined) ? 0 : (this.mixer[fruit]/this.amount).toFixed(2);
+};
+
+Jar.prototype.add = function(quan,fruit) {
+	this.mixer[fruit] = (this.mixer[fruit] === undefined) ? quan : this.mixer[fruit] + quan;
+	this.amount += quan;
+};
+
+Jar.prototype.getTotalAmount = function(quan,fruit) {
+	return this.amount;
+};
 
 /*
 These are some tests:
