@@ -34,9 +34,20 @@ rotate(data, 11)    // => [5, 1, 2, 3, 4]
 rotate(data, 12478) // => [3, 4, 5, 1, 2]
 
 */
-function rotate(array, steps){
-
+// I wrote this method to get over the module operator bug in javascript when using negative numbers. 
+function mod(n, m) {
+        return ((n % m) + m) % m;
 }
+
+function rotate(array, steps){
+	var result = [], total = array.length;
+	for (var i = 0; i < total; i++) {
+		result[mod((i + steps),total)] = array[i];
+	}
+	return result;
+}
+
+
 
 /*
 Problem 2 (Advanced)
@@ -56,5 +67,23 @@ nextBigger(531)==-1
 */
 
 function nextBigger(num){
+	var arrOfNum = num.toString().split("");
+	var flage = false;
+	for (var i = arrOfNum.length-1; i > 0 ; i--) {
+		if(arrOfNum[i] > arrOfNum[i-1]){
+			swap(arrOfNum,i,i-1);
+			flage = true;
+		}
+		if(flage){
+			var result = arrOfNum.join("");
+			return parseInt(result);
+		}
+	}
+	return -1;
+}
 
+function swap(arr,pos1,pos2){
+	var tmp = arr[pos1];
+	arr[pos1] = arr[pos2];
+	arr[pos2] = tmp;
 }
