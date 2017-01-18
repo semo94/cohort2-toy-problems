@@ -5,5 +5,10 @@ Hint the answer is 1366.
 */
 
 var powerOfTwo = function(num){
-
+	var result = 0;
+	var powNum = Math.pow(2,num).toString();
+	for (var i = 0; i < powNum.length; i++) {
+		result+= parseInt(powNum[i]);
+	}
+	return result;
 }
