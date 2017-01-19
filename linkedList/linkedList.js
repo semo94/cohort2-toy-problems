@@ -18,7 +18,47 @@
 
 
 var LinkedList = function(){
-  //fill me in!
+  this.head = null;
+  this.tail = null;
 };
 
-//write methods here!
+var Node = function(value){
+	this.value = value;
+	this.next = null;
+}
+
+LinkedList.prototype.addToTail = function(value) {
+	if(this.head===null){
+		this.head = new Node(value);
+		this.tail = new Node(value);
+	}else{
+		var pointer = this.head;
+		while(pointer.next !== null){
+			pointer = pointer.next;
+		}
+		pointer.next = new Node(value);
+		this.tail = new Node(value); 
+	}
+};
+
+LinkedList.prototype.removeHead = function() {
+	var result = this.head.value;
+	this.head = this.head.next;
+	if(this.head === null){
+		this.tail = null;
+	}
+	return result;
+
+};
+
+LinkedList.prototype.contains = function(target) {
+  var pointer = list.head;
+  while (pointer.next !== null){
+    if (pointer.value===target){
+      return true;
+    }
+    pointer = pointer.next
+    if(pointer.value === target){return true;}
+  }
+  return false;
+};
