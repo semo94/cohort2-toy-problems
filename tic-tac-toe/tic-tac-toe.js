@@ -36,9 +36,9 @@ function ticTacToe(board){
 	}
 	check = checkZeros(board);
 	if(!check){
-		return check;
+		return -1;
 	}
-	return -1;
+	return 0;
 };
 
 var checkRow = function(sub){
