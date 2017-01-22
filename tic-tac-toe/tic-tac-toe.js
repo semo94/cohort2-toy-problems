@@ -22,5 +22,85 @@ ticTacToe(solvedBoard);//should return 1
 */
 
 function ticTacToe(board){
-	
+	var check = checkRows(board);
+	if(check){
+		return check;
+	}
+	check = checkColums(board);
+	if(check){
+		return check;
+	}
+	check = checkDiagonal(board);
+	if(check){
+		return check;
+	}
+	check = checkZeros(board);
+	if(!check){
+		return check;
+	}
+	return -1;
 };
+
+var checkRow = function(sub){
+	if(sub.join("").split("1").length-1 === 3 || sub.split("2").length-1 === 3){
+		return true;
+	}
+	return false;
+}
+
+var checkRows = function(board){
+	var flage = false;
+	board.forEach(function(sub){
+		if(checkRow(sub)){
+			flage = sub[0];
+		}
+	})
+	return flage;
+}
+
+var checkColums = function(board){
+	for (var i = 0; i < board.length; i++) {
+		if((board[0][i] && board[1][i] && board[2][i]) === 1 ||
+		   (board[0][i] && board[1][i] && board[2][i]) === 2){
+			return board[0][i];
+		}
+	}
+	return false;
+}
+
+var checkDiagonal = function(board){
+	var check = checkMajor(board);
+	if(check){
+		return check;
+	}
+	check = checkMinor(board)
+	if(check){
+		return check;
+	}
+	return false;
+}
+
+var checkMajor = function(board){
+	if(board[0][0] && board[1][1] && board[2][2] === 1 ||
+	   board[0][0] && board[1][1] && board[2][2] === 2){
+		return board[0][0];
+	}
+	return false;
+}
+
+var checkMinor = function(board){
+	if(board[0][2] && board[1][1] && board[2][0] === 1 ||
+	   board[0][2] && board[1][1] && board[2][0] === 2){
+		return board[0][0];
+	}
+	return false;
+}
+
+var checkZeros = function(board){
+	for (var i = 0; i < board.length; i++) {
+		if(board[i].indexOf(0) > -1){
+			return 1;
+		}
+	}
+	return 0;
+}
