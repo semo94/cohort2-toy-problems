@@ -14,6 +14,15 @@ arr = [2,4,3,6,8,2,3,4,8];
 singleNumber(arr);//should return 6 because it only appear once
 */
 function singleNumber(arr){
+	var dic = {};
+	for (var i = 0; i < arr.length; i++) {
+		if(dic[arr[i]] === undefined){
+			dic[arr[i]] = true;
+		}else{
+			delete dic[arr[i]]
+		}
+	}
+	return Object.keys(dic)[0];
 
 }
 
@@ -32,8 +41,15 @@ twoSum(nums,9); //should return [0,1] because nums[0] + nums[1] = 2 + 7 = 9;
 */
 
 function twoSum(nums, target){
-
+	for (var i = 0; i < nums.length-1; i++) {
+		var comp = target - nums[i];
+		var tmpArr = nums.slice(i+1);
+		if(tmpArr.includes(comp)){
+			return [nums[i],comp];
+		}
+	}
 }
+
 
 /*
 Problem 3 (advanced):
@@ -47,5 +63,19 @@ countAllNumbers(2); //should return 91 because there are 91 numbers that have un
 */
 
 function countAllNumbers(n){
+// TODO:
+// 	if(n>9){
+// 		var counter = 1000000000
+// 		for (var i = 0; i < 1000000000; i++) {	
 
-};
+// 		}
+// 	}else{
+// 		var upperBound = Math.pow(10,n)
+// 		var counter = upperBound;
+// 		for (var i = 0; i < upperBound; i++) {
+// 			if(i.toString().split(i).length-1 === )
+// 		}
+// 	}
+
+// };
+
