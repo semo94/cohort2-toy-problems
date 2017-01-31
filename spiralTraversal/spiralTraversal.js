@@ -28,7 +28,7 @@ var spiralTraversal = function(matrix){
 		right-=1;
 
 		for (var i = right; i >= left; i--) {
-			result.push(matrix[left][i]);
+			result.push(matrix[bottom][i]);
 		}
 		bottom-=1;
 
