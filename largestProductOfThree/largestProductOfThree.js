@@ -8,7 +8,9 @@
  */
 
 var largestProductOfThree = function(array) {
-	array = array.sort();
+	array = array.sort(function(a,b){
+		return a - b;
+	});
 	left = array[0]*array[1];
 	right = array[array.length-2] * array[array.length-3];
 	if(array[array.length-1] < 0){
