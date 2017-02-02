@@ -23,5 +23,11 @@
 */
 
 Array.prototype.isSubsetOf = function (arr) {
-
+	var subset = this;
+	var validate = subset.length;
+	subset.forEach(function(elm){
+		if(arr.includes(elm)){validate-=1};
+	});
+	return validate ? false : true;
 }
+
