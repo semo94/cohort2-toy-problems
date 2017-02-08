@@ -1,4 +1,3 @@
-
 /**
  * Given a roman numeral as input, write a function that converts the roman
  * numeral to a number and outputs it.
@@ -26,4 +25,18 @@ var translateRomanNumeral = function(romanNumeral){
 	  D: 500,
 	  M: 1000
 	};
+	var romanChars = romanNumeral.split("");
+	var result = 0;
+	for (var i = 0; i < romanChars.length; i+=2) {
+		if(!romanChars[i+1]){
+			result += (DIGIT_VALUES[romanChars[i]] > DIGIT_VALUES[romanChars[i-1]])
+			? DIGIT_VALUES[romanChars[i]] - DIGIT_VALUES[romanChars[i-1]]
+			: DIGIT_VALUES[romanChars[i]];
+		}else{
+		result += (DIGIT_VALUES[romanChars[i]] < DIGIT_VALUES[romanChars[i+1]])
+		? (DIGIT_VALUES[romanChars[i+1]] - DIGIT_VALUES[romanChars[i]]) 
+		: DIGIT_VALUES[romanChars[i]] + DIGIT_VALUES[romanChars[i+1]];
+		}
+	}
+	return result;
 }
