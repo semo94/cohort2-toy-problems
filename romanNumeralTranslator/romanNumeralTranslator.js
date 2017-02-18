@@ -15,28 +15,28 @@
  * You should return `null` on invalid input.
  */
 
-var translateRomanNumeral = function(romanNumeral){
-	var DIGIT_VALUES = {
-	  I: 1,
-	  V: 5,
-	  X: 10,
-	  L: 50,
-	  C: 100,
-	  D: 500,
-	  M: 1000
-	};
-	var romanChars = romanNumeral.split("");
-	var result = 0;
-	for (var i = 0; i < romanChars.length; i+=2) {
-		if(!romanChars[i+1]){
-			result += (DIGIT_VALUES[romanChars[i]] > DIGIT_VALUES[romanChars[i-1]])
-			? DIGIT_VALUES[romanChars[i]] - DIGIT_VALUES[romanChars[i-1]]
-			: DIGIT_VALUES[romanChars[i]];
-		}else{
-		result += (DIGIT_VALUES[romanChars[i]] < DIGIT_VALUES[romanChars[i+1]])
-		? (DIGIT_VALUES[romanChars[i+1]] - DIGIT_VALUES[romanChars[i]]) 
-		: DIGIT_VALUES[romanChars[i]] + DIGIT_VALUES[romanChars[i+1]];
-		}
-	}
-	return result;
+ var translateRomanNumeral = function(romanNumeral){
+  var DIGIT_VALUES = {
+    I: 1,
+    V: 5,
+    X: 10,
+    L: 50,
+    C: 100,
+    D: 500,
+    M: 1000
+  };
+  var romanChars = romanNumeral.split("");
+  var result = 0;
+  for (var i = 0; i < romanChars.length; i+=2) {
+    if(!romanChars[i+1]){
+      result += (DIGIT_VALUES[romanChars[i]] > DIGIT_VALUES[romanChars[i-1]])
+      ? DIGIT_VALUES[romanChars[i]] - DIGIT_VALUES[romanChars[i-1]]
+      : DIGIT_VALUES[romanChars[i]];
+    }else{
+      result += (DIGIT_VALUES[romanChars[i]] < DIGIT_VALUES[romanChars[i+1]])
+      ? (DIGIT_VALUES[romanChars[i+1]] - DIGIT_VALUES[romanChars[i]]) 
+      : DIGIT_VALUES[romanChars[i]] + DIGIT_VALUES[romanChars[i+1]];
+    }
+  }
+  return result;
 }
