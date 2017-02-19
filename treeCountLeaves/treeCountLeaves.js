@@ -49,7 +49,6 @@ Tree.prototype.countLeaves = function () {
       }
     }
     leafs+=1;
-
   }
   count(childs);
   return leafs;
