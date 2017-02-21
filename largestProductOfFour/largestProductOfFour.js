@@ -43,21 +43,27 @@ var haveAdjac = function (i,j,pos,length)	{
 }
 
 
-var largestProductOfFour = function(array) {
-	var right = 1, down = 1, diagonal = 1;
+var largestProductOfFour = function(array, max) {
+	var max = 0;
+	var right = 0, down = 0, diagonal = 0;
 	for (var i = 0; i < array.length; i++) {
 		for (var j = 0; j < array.length; j++) {
-			if(haveAdjac(i,j,'right',array.length)){
-				var right = array[i,j] * array[i,j+1] * array[i,j+2] * array[i,j+3];
+			if(haveAdjac(i,j,'right',array.length))	{
+				right = array[i,j] * array[i,j+1] * array[i,j+2] * array[i,j+3];
 			}
-				if(haveAdjac(i,j,'down',array.length)){
-				var right = array[i,j] * array[i+1,j] * array[i+2,j] * array[i+3,j];
+				if(haveAdjac(i,j,'down',array.length))	{
+				down = array[i,j] * array[i+1,j] * array[i+2,j] * array[i+3,j];
 			}
-				if(haveAdjac(i,j,'diagonal',array.length)){
-				var right = array[i,j] * array[i+1,j+1] * array[i+2,j+2] * array[i+3,j+3];
+				if(haveAdjac(i,j,'diagonal',array.length))	{
+				diagonal = array[i,j] * array[i+1,j+1] * array[i+2,j+2] * array[i+3,j+3];
+			}
+			var currentMax = Math.max(right,down,diagonal);
+			if (max < currentMax) {
+				max = currentMax
 			}
 		}
 	}
+	return max;
 };
 
 
