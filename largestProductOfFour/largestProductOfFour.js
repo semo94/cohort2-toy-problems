@@ -30,15 +30,34 @@
  (up, down, left, right, or diagonally) in the 20×20 grid?
 *
 * 
-*
-*
+**
+
 *
 *
 */
+// NOT COMMPLETE YET!
+var haveAdjac = function (i,j,pos,length)	{
+	return (pos === 'right' && j+3 < length) ? true :
+	return (pos === 'down' && i+3 < length) ? true :
+	return (pos === 'diagonal' && i+3 <length && j+3 <length) ? true : false;
+}
 
 
 var largestProductOfFour = function(array) {
-
+	var right = 1, down = 1, diagonal = 1;
+	for (var i = 0; i < array.length; i++) {
+		for (var j = 0; j < array.length; j++) {
+			if(haveAdjac(i,j,'right',array.length)){
+				var right = array[i,j] * array[i,j+1] * array[i,j+2] * array[i,j+3];
+			}
+				if(haveAdjac(i,j,'down',array.length)){
+				var right = array[i,j] * array[i+1,j] * array[i+2,j] * array[i+3,j];
+			}
+				if(haveAdjac(i,j,'diagonal',array.length)){
+				var right = array[i,j] * array[i+1,j+1] * array[i+2,j+2] * array[i+3,j+3];
+			}
+		}
+	}
 };
 
 
